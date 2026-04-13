@@ -406,6 +406,146 @@
     .event-desc { padding-left: 0; margin-top: 0.3rem; }
     .page-footer { flex-direction: column; gap: 4px; }
   }
+
+  /* ── Checklist link ── */
+  .checklist-link {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .checklist-link:hover { text-decoration: underline; }
+
+  /* ── Appendix ── */
+  .appendix {
+    margin-top: 2.5rem;
+    border: 1px solid var(--teal-border);
+    border-top: 4px solid var(--teal);
+    background: var(--teal-bg);
+    padding: 1.4rem 1.6rem;
+  }
+
+  .appendix-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+
+  .appendix-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .appendix-sub {
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  .checklist-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    min-width: 540px;
+  }
+
+  .checklist-table thead tr {
+    background: var(--teal);
+  }
+
+  .checklist-table thead th {
+    color: #fff;
+    font-weight: 500;
+    padding: 8px 12px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .checklist-table thead th:first-child {
+    text-align: left;
+    min-width: 200px;
+  }
+
+  .checklist-table tbody tr {
+    border-bottom: 1px solid var(--teal-border);
+    background: #fff;
+  }
+
+  .checklist-table tbody tr:nth-child(even) {
+    background: #f4faf8;
+  }
+
+  .checklist-table tbody tr:hover {
+    background: #e6f5f0;
+  }
+
+  .checklist-table td {
+    padding: 7px 12px;
+    color: var(--ink-mid);
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .checklist-table td:first-child {
+    text-align: left;
+    color: var(--ink);
+  }
+
+  .checklist-table td.check {
+    color: var(--teal);
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .checklist-table td.dash {
+    color: var(--ink-faint);
+  }
+
+  .checklist-table td.shared {
+    color: var(--gold);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    background: var(--gold-bg);
+  }
+
+  .section-row td {
+    background: var(--bg-deep) !important;
+    color: var(--ink-light) !important;
+    font-size: 11px !important;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px !important;
+    font-weight: 500 !important;
+  }
+
+  .appendix-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 11px;
+    color: var(--ink-light);
+  }
+
+  .legend-check { color: var(--teal); font-weight: 500; margin-right: 3px; }
+  .legend-shared { color: var(--gold); font-weight: 500; margin-right: 3px; }
+  .legend-dash { color: var(--ink-faint); margin-right: 3px; }
 </style>
 </head>
 <body>
@@ -467,9 +607,9 @@
       <div class="event-card highlight">
         <div class="event-top">
           <div class="event-date">3 / 13</div>
-          <div class="event-title">第一次詢問延保保費；確認理賠文件交付方式及收件日期<span class="tag tag-warn">待處理</span></div>
+          <div class="event-title">第一次詢問延保保費；確認理賠文件交付方式並約定收件日期<span class="tag tag-warn">待處理</span></div>
         </div>
-        <div class="event-desc">詢問延保保費繳交方式；確認理賠文件以面交方式繳交，並約定收件日期。</div>
+        <div class="event-desc">詢問延保保費繳交方式；要保人詢問理賠文件是否可郵寄，業務表示須以面交方式繳交，並提議 3/17 面交。要保人隨即告知 3/17 當日有事，業務改約 3/20 面交理賠文件。</div>
       </div>
     </div>
 
@@ -485,13 +625,13 @@
     </div>
 
     <div class="event">
-      <div class="event-dot dot-normal"></div>
-      <div class="event-card">
+      <div class="event-dot dot-warning"></div>
+      <div class="event-card highlight">
         <div class="event-top">
           <div class="event-date">3 / 20</div>
-          <div class="event-title">面收理賠文件</div>
+          <div class="event-title">第一次面收理賠文件；要保人告知有缺件<span class="tag tag-warn">缺件</span></div>
         </div>
-        <div class="event-desc">依約定日期面交理賠文件給保險公司。</div>
+        <div class="event-desc">依約定日期面交理賠文件。要保人自行發現文件不齊，當場主動告知業務有缺件，待補齊後再行補交。</div>
       </div>
     </div>
 
@@ -502,7 +642,7 @@
           <div class="event-date">3 / 22</div>
           <div class="event-title">第三次詢問延保保費；預約補件收件時間<span class="tag tag-warn">第三次催詢</span></div>
         </div>
-        <div class="event-desc">第三次詢問延保保費，同時預約補件收件時間。</div>
+        <div class="event-desc">第三次詢問延保保費；同時與業務預約補件收件時間，約定 3/25 面交補件。</div>
       </div>
     </div>
 
@@ -522,9 +662,9 @@
       <div class="event-card">
         <div class="event-top">
           <div class="event-date">3 / 25</div>
-          <div class="event-title">面收補件；保戶提供文件清單</div>
+          <div class="event-title">第二次面收理賠文件（補件）；保戶提供文件清單</div>
         </div>
-        <div class="event-desc">第二次面交補充文件，並由保戶方主動提供應交付文件清單，確保文件完整。</div>
+        <div class="event-desc">依約定日期面交第一次缺件之補充文件，並由保戶方主動提供應交付文件清單，確保文件完整。<br><a href="#checklist" class="checklist-link" onclick="toggleChecklist(event)">▾ 查看理賠文件檢核表</a></div>
       </div>
     </div>
 
@@ -544,9 +684,9 @@
       <div class="event-card highlight">
         <div class="event-top">
           <div class="event-date">3 / 27</div>
-          <div class="event-title">告知缺件與補件<span class="tag tag-warn">缺件</span></div>
+          <div class="event-title">業務告知再次缺件；要保人當日補件<span class="tag tag-warn">第二次缺件</span></div>
         </div>
-        <div class="event-desc">08:18 收到缺件通知；08:37 即提供補件，19 分鐘內完成回應。</div>
+        <div class="event-desc">業務審閱 3/25 補件後，於 08:18 通知要保人仍有缺件；要保人於 08:37 即完成補件，19 分鐘內完成回應。</div>
       </div>
     </div>
 
@@ -590,7 +730,7 @@
     <div class="summary-box-title">主要問題摘要</div>
     <ul>
       <li>延保保費繳款單延遲發出，保戶須催詢三次（3/13、3/15、3/22）才於 3/26 收到</li>
-      <li>理賠文件 3/20 面收後，遲至 4/1 才由理賠單位確認收件（共 12 天）</li>
+      <li>理賠文件 3/27 確認無缺件後，遲至 4/1 才由理賠單位確認收件（共 5 天）</li>
       <li>4/13 保戶表明將投訴主管機關後，當日 13:41 才收到受理通知</li>
       <li>截至 4/13，理賠案件仍在處理中，保戶尚未收到理賠確認或任何款項</li>
     </ul>
@@ -601,7 +741,57 @@
     <span>製作日期：2025 年 4 月 13 日</span>
   </div>
 
-</div>
+  <!-- Appendix: Checklist -->
+  <div id="checklist" class="appendix" style="display:none;">
+    <div class="appendix-header">
+      <div class="appendix-eyebrow">附件 · 3/25 保戶提供</div>
+      <div class="appendix-title">理賠文件檢核表</div>
+      <div class="appendix-sub">由要保人於 3/25 面交補件時一併提供，用以確認各保戶應繳交之理賠文件均已齊備，避免缺漏。</div>
+    </div>
+    <div class="table-wrap">
+      <table class="checklist-table">
+        <thead>
+          <tr>
+            <th>文件</th>
+            <th>保戶 A</th>
+            <th>保戶 B</th>
+            <th>保戶 C</th>
+            <th>保戶 D</th>
+            <th>保戶 E</th>
+            <th>保戶 F</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>護照</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>存摺</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>開羅－羅馬 登機證（埃航）</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>羅馬－台北 登機證（華航）</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>開羅－羅馬 收據（埃航）</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>羅馬－台北 收據（華航）</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>阿聯酋班機取消證明</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Agoda 的阿聯酋退款通知</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr class="section-row"><td colspan="7">3/1 相關費用</td></tr>
+          <tr><td>3/1 Uber 收據（至開羅機場）</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="shared" colspan="3">共用收據</td></tr>
+          <tr><td>3/1 羅馬機場快線收據</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>3/1 羅馬住宿收據</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>3/1 羅馬住宿城市稅</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr class="section-row"><td colspan="7">3/2 相關費用</td></tr>
+          <tr><td>3/2 接送收據（至開羅機場）</td><td class="shared" colspan="3">共用收據</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
+          <tr><td>3/2 羅馬機場快線收據</td><td class="shared" colspan="3">共用收據</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
+          <tr><td>3/2～3/6 羅馬住宿收據</td><td class="shared" colspan="6">共用收據</td></tr>
+          <tr><td>3/2～3/6 羅馬住宿城市稅</td><td class="shared" colspan="6">共用收據</td></tr>
+          <tr><td>3/6 機場接送（至羅馬機場）</td><td class="shared" colspan="3">共用收據</td><td class="shared" colspan="3">共用收據</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="appendix-legend">
+      <span><span class="legend-check">✓</span> 各保戶個別提供</span>
+      <span><span class="legend-shared">共用收據</span> 合併為一張收據提交</span>
+      <span><span class="legend-dash">—</span> 不適用</span>
+    </div>
+  </div>
+
+
 
 <script>
   window.addEventListener('load', () => {
@@ -609,6 +799,20 @@
       document.getElementById('progressFill').style.width = '100%';
     }, 400);
   });
+
+  function toggleChecklist(e) {
+    e.preventDefault();
+    const box = document.getElementById('checklist');
+    const link = e.target;
+    if (box.style.display === 'none') {
+      box.style.display = 'block';
+      link.textContent = '▴ 收起理賠文件檢核表';
+      setTimeout(() => box.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    } else {
+      box.style.display = 'none';
+      link.textContent = '▾ 查看理賠文件檢核表';
+    }
+  }
 
   const events = document.querySelectorAll('.event');
   const observer = new IntersectionObserver((entries) => {
