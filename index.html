@@ -177,11 +177,67 @@
   }
 
   .progress-ticks {
-    display: flex;
-    justify-content: space-between;
+    position: relative;
+    height: 36px;
+    margin-top: 4px;
+  }
+
+  .progress-tick {
+    position: absolute;
+    transform: translateX(-50%);
     font-size: 10px;
     color: var(--ink-light);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .progress-tick:first-child { transform: translateX(0); }
+  .progress-tick:last-child  { transform: translateX(-100%); }
+
+  @media (max-width: 600px) {
+    .progress-ticks {
+      position: static;
+      height: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 4px;
+      margin-top: 10px;
+    }
+
+    .progress-tick {
+      position: static;
+      transform: none;
+      white-space: normal;
+      font-size: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .progress-tick::before {
+      content: '●';
+      font-size: 6px;
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .progress-tick:first-child,
+    .progress-tick:last-child {
+      transform: none;
+    }
+
+    .progress-tick br { display: none; }
+
+    .progress-tick .tick-date {
+      font-weight: 500;
+      color: var(--ink-mid);
+      margin-right: 2px;
+    }
   }
 
   /* ── Month heading ── */
@@ -668,7 +724,7 @@
   <div class="masthead">
     <div class="masthead-eyebrow">理賠申請記錄 · 2026</div>
     <h1>旅平險理賠申請時間軸</h1>
-    <div class="masthead-sub">從延保通知至理賠受理確認，歷時 <strong>43 天</strong> &nbsp;·&nbsp; 理賠結果仍待確認</div>
+    <div class="masthead-sub">從延保通知至理賠受理確認，歷時 <strong>44 天（29 個工作天）</strong> &nbsp;·&nbsp; 理賠結果仍待確認</div>
   </div>
 
   <div class="summary-grid">
@@ -692,9 +748,10 @@
       <div class="progress-fill" id="progressFill"></div>
     </div>
     <div class="progress-ticks">
-      <span>3/20 面收文件</span>
-      <span>4/1 確認收件</span>
-      <span>4/13 受理通知</span>
+      <span class="progress-tick" style="left: 0%"><span class="tick-date">3/20</span><br>面收文件</span>
+      <span class="progress-tick" style="left: 29%"><span class="tick-date">3/27</span><br>窗口確認文件齊全並送出</span>
+      <span class="progress-tick" style="left: 50%"><span class="tick-date">4/1</span><br>公司系統登載簽收</span>
+      <span class="progress-tick" style="left: 100%"><span class="tick-date">4/13</span><br>受理通知</span>
     </div>
   </div>
 
@@ -863,7 +920,7 @@
           <div class="event-title">收到理賠受理通知；理賠結果仍待確認<span class="tag tag-pending">進行中</span></div>
         </div>
         <div class="event-desc">
-          上午多位保戶反映未收到受理通知、查無案號，並告知將投訴主管機關。客服告知 4/1 理賠單位已確認收件；保險窗口告知本週公司將完成分件處理。13:41 保戶收到理賠受理通知。
+          上午多位保戶反映未收到受理通知、查無案號，並告知將投訴主管機關。客服告知：系統上登載 4/1 簽收理賠申請；保險窗口告知本週公司將完成分件處理。13:41 保戶收到理賠受理通知。
           <span class="alert-inline">⚠ 注意：目前僅取得受理通知，尚未收到實際理賠結果或理賠款項，案件仍在處理中。</span>
         </div>
       </div>
