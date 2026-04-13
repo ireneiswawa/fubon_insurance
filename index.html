@@ -546,6 +546,120 @@
   .legend-check { color: var(--teal); font-weight: 500; margin-right: 3px; }
   .legend-shared { color: var(--gold); font-weight: 500; margin-right: 3px; }
   .legend-dash { color: var(--ink-faint); margin-right: 3px; }
+
+  /* ── Law box ── */
+  .law-box {
+    margin-top: 2rem;
+    border: 1px solid var(--ink-faint);
+    border-top: 4px solid var(--ink-mid);
+    background: var(--bg-warm);
+    padding: 1.4rem 1.6rem;
+  }
+
+  .law-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+
+  .law-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+
+  .law-text {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    border-left: 3px solid var(--ink-faint);
+    padding-left: 1rem;
+    margin-bottom: 1.4rem;
+    font-style: italic;
+  }
+
+  .law-deadlines-label {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-light);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .deadline-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .deadline-card {
+    background: var(--bg);
+    border: 1px solid var(--bg-deep);
+    padding: 1rem 1.1rem;
+  }
+
+  .deadline-basis {
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  .deadline-date {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .deadline-highlight {
+    color: var(--orange);
+  }
+
+  .deadline-detail {
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .deadline-status {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 8px;
+    display: inline-block;
+    border-radius: 2px;
+  }
+
+  .deadline-status.overdue {
+    background: var(--red-bg);
+    color: var(--red);
+    border: 1px solid var(--red-border);
+  }
+
+  .deadline-status.pending {
+    background: var(--teal-bg);
+    color: var(--teal);
+    border: 1px solid var(--teal-border);
+  }
+
+  .law-note {
+    font-size: 11px;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 560px) {
+    .deadline-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -573,7 +687,7 @@
   </div>
 
   <div class="progress-block">
-    <div class="progress-label">從面收文件（3/20）至收到受理通知（4/13）共 <strong>24 天</strong>，理賠結果仍未確認</div>
+    <div class="progress-label">從面收文件（3/20）至收到受理通知（4/13）共 <strong style="color: var(--orange);">24 天</strong>（15 個工作天），理賠結果仍未確認</div>
     <div class="progress-track">
       <div class="progress-fill" id="progressFill"></div>
     </div>
@@ -684,7 +798,7 @@
           <div class="event-date">3 / 24</div>
           <div class="event-title">批改完成<span class="tag tag-info">延保生效</span></div>
         </div>
-        <div class="event-desc">延保批改正式完成，距通知日已逾 23 天。</div>
+        <div class="event-desc">延保批改正式完成，距通知日已逾 23 天（16 個工作天）。</div>
       </div>
     </div>
 
@@ -761,10 +875,38 @@
     <div class="summary-box-title">主要問題摘要</div>
     <ul>
       <li>延保保費繳款單延遲發出，保戶須催詢三次（3/13、3/15、3/22）才於 3/26 收到</li>
-      <li>理賠文件 3/27 確認無缺件後，遲至 4/1 才由理賠單位確認收件（共 5 天）</li>
+      <li>理賠文件 3/27 確認無缺件後，遲至 4/1 才由理賠單位確認收件（共 5 天 或稱 3 個工作天）</li>
       <li>4/13 保戶表明將投訴主管機關後，當日 13:41 才收到受理通知</li>
       <li>截至 4/13，理賠案件仍在處理中，保戶尚未收到理賠確認或任何款項</li>
     </ul>
+  </div>
+
+  <div class="law-box">
+    <div class="law-eyebrow">法規依據</div>
+    <div class="law-title">保險法第 34 條　賠償金額之給付期限</div>
+    <div class="law-text">「保險人應於要保人或被保險人交齊證明文件後，於約定期限內給付賠償金額；無約定期限者，應於接到通知後 15 日內給付之。」</div>
+
+    <div class="law-deadlines">
+      <div class="law-deadlines-label">依本條計算，本案應給付期限如下：</div>
+      <div class="deadline-grid">
+
+        <div class="deadline-card">
+          <div class="deadline-basis">基準一：3/27 保險窗口確認無缺件</div>
+          <div class="deadline-date">應於 <span class="deadline-highlight">4/11</span> 前給付</div>
+          <div class="deadline-detail">自 3/27 起算 15 日</div>
+          <div class="deadline-status overdue">已逾期（截至 4/13 已過期 2 日）</div>
+        </div>
+
+        <div class="deadline-card">
+          <div class="deadline-basis">基準二：4/1 理賠單位確認收件</div>
+          <div class="deadline-date">應於 <span class="deadline-highlight">4/16</span> 前給付</div>
+          <div class="deadline-detail">自 4/1 起算 15 日</div>
+          <div class="deadline-status pending">截至 4/13 仍在期限內，尚餘 3 日</div>
+        </div>
+
+      </div>
+      <div class="law-note">※ 兩項基準日期均有所據，實際採用基準日將影響保險人是否構成逾期給付。</div>
+    </div>
   </div>
 
   <div class="page-footer">
