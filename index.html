@@ -246,9 +246,9 @@
     .progress-ticks {
       position: static;
       height: auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
       margin-top: 10px;
     }
 
@@ -275,7 +275,7 @@
       font-size: 6px;
       color: var(--orange);
       flex-shrink: 0;
-      margin-top: 3px;
+      margin-top: 4px;
     }
 
     .progress-tick br { display: none; }
@@ -283,7 +283,7 @@
     .progress-tick .tick-date {
       font-weight: 500;
       color: var(--ink-mid);
-      margin-right: 2px;
+      margin-right: 4px;
     }
   }
 
