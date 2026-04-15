@@ -255,20 +255,27 @@
     .progress-bar-row { display: none; }
 
     .progress-tick {
-      position: static;
+      position: static !important;
       transform: none !important;
       white-space: normal;
       font-size: 10px;
-      display: flex;
+      display: flex !important;
       align-items: flex-start;
       gap: 5px;
       text-align: left;
       line-height: 1.5;
       bottom: auto !important;
       top: auto !important;
+      left: auto !important;
     }
 
-    .progress-tick::after { display: none; }
+    .progress-tick.tick-above[style*="left: 0%"]   { order: 1; }
+    .progress-tick.tick-below[style*="left: 27%"]  { order: 2; }
+    .progress-tick.tick-above[style*="left: 46%"]  { order: 3; }
+    .progress-tick.tick-below[style*="left: 92%"]  { order: 4; }
+    .progress-tick.tick-above[style*="left: 100%"] { order: 5; }
+
+    .progress-tick::after { display: none !important; }
 
     .progress-tick::before {
       content: '●';
@@ -276,6 +283,7 @@
       color: var(--orange);
       flex-shrink: 0;
       margin-top: 4px;
+      display: block !important;
     }
 
     .progress-tick br { display: none; }
