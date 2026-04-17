@@ -164,7 +164,6 @@
     height: 8px;
     background: var(--bg-deep);
     border-radius: 4px;
-    overflow: hidden;
     margin-bottom: 0.5rem;
   }
 
@@ -178,13 +177,13 @@
 
   .progress-ticks {
     position: relative;
-    height: 88px;
+    height: 90px;
     margin-top: 0;
   }
 
   .progress-bar-row {
     position: absolute;
-    top: 38px;
+    top: 40px;
     left: 0;
     right: 0;
   }
@@ -200,15 +199,15 @@
     transform: translateX(-50%);
   }
 
-  /* Above the bar: text sits in top 34px, bottom-aligned to bar */
+  /* Above the bar: bottom edge aligns to top of bar (top: 40px) */
   .progress-tick.tick-above {
-    top: 0;
+    top: 4px;
     transform: translateX(-50%);
   }
 
-  /* Below the bar: starts at bar bottom (38px + 8px) + 6px gap */
+  /* Below the bar: top edge = bar top(40) + bar height(8) + gap(6) */
   .progress-tick.tick-below {
-    top: 52px;
+    top: 54px;
     transform: translateX(-50%);
   }
 
@@ -270,20 +269,28 @@
     }
 
     .progress-tick.tick-above[style*="left: 0%"]   { order: 1; }
-    .progress-tick.tick-below[style*="left: 27%"]  { order: 2; }
-    .progress-tick.tick-above[style*="left: 46%"]  { order: 3; }
-    .progress-tick.tick-below[style*="left: 92%"]  { order: 4; }
+    .progress-tick.tick-below[style*="left: 25%"]  { order: 2; }
+    .progress-tick.tick-above[style*="left: 43%"]  { order: 3; }
+    .progress-tick.tick-below[style*="left: 86%"]  { order: 4; }
     .progress-tick.tick-above[style*="left: 100%"] { order: 5; }
 
     .progress-tick::after { display: none !important; }
 
-    .progress-tick::before {
-      content: '●';
+    .progress-tick::before,
+    .progress-tick.tick-below::before,
+    .progress-tick.tick-above::before {
+      content: '●' !important;
       font-size: 6px;
       color: var(--orange);
       flex-shrink: 0;
       margin-top: 4px;
       display: block !important;
+      width: auto !important;
+      height: auto !important;
+      background: none !important;
+      position: static !important;
+      top: auto !important;
+      left: auto !important;
     }
 
     .progress-tick br { display: none; }
@@ -756,6 +763,15 @@
     border: 1px solid var(--red-border);
   }
 
+  .deadline-affected {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--red);
+    padding-top: 8px;
+    border-top: 1px solid var(--red-border);
+  }
+
   .deadline-status.pending {
     background: var(--teal-bg);
     color: var(--teal);
@@ -779,7 +795,7 @@
   <div class="masthead">
     <div class="masthead-eyebrow">理賠申請記錄 · 2026</div>
     <h1>旅平險理賠申請時間軸</h1>
-    <div class="masthead-sub">從延保通知至收到理賠款項，歷時 <strong>46 天（31 個工作天）</strong> &nbsp;·&nbsp; 理賠完成</div>
+    <div class="masthead-sub">從延保通知至今，已歷時 <strong>48 天（33 個工作天）</strong> &nbsp;·&nbsp; 1 位保戶理賠尚未完成</div>
   </div>
 
   <div class="summary-grid">
@@ -793,17 +809,17 @@
     </div>
     <div class="summary-card">
       <div class="summary-label">理賠結果</div>
-      <div class="summary-value" style="color: var(--teal);">已完成</div>
+      <div class="summary-value orange">部分完成</div>
     </div>
   </div>
 
   <div class="progress-block">
-    <div class="progress-label">從面收文件（3/20）至收到理賠款項（4/15）共 <strong style="color: var(--orange);">26 天</strong>，已完成理賠</div>
+    <div class="progress-label">從面收文件（3/20）至今（4/17）共 <strong style="color: var(--orange);">28 天</strong>，1 位保戶理賠尚未完成</div>
     <div class="progress-ticks">
       <!-- Labels above the bar -->
       <span class="progress-tick tick-above" style="left: 0%"><span class="tick-date">3/20</span><br>面收文件</span>
-      <span class="progress-tick tick-above" style="left: 46%"><span class="tick-date">4/1</span><br>公司系統登載簽收</span>
-      <span class="progress-tick tick-above" style="left: 100%"><span class="tick-date">4/15</span><br>收到款項</span>
+      <span class="progress-tick tick-above" style="left: 43%"><span class="tick-date">4/1</span><br>公司系統登載簽收</span>
+      <span class="progress-tick tick-above" style="left: 100%"><span class="tick-date">4/17</span><br>截至今日</span>
       <!-- The bar itself -->
       <div class="progress-bar-row">
         <div class="progress-track" style="margin-bottom:0">
@@ -811,8 +827,8 @@
         </div>
       </div>
       <!-- Labels below the bar -->
-      <span class="progress-tick tick-below" style="left: 27%"><span class="tick-date">3/27</span><br>窗口確認文件齊全並送出</span>
-      <span class="progress-tick tick-below" style="left: 92%"><span class="tick-date">4/13</span><br>受理通知</span>
+      <span class="progress-tick tick-below" style="left: 25%"><span class="tick-date">3/27</span><br>窗口確認文件齊全並送出</span>
+      <span class="progress-tick tick-below" style="left: 86%"><span class="tick-date">4/13</span><br>受理通知</span>
     </div>
   </div>
 
@@ -991,9 +1007,20 @@
       <div class="event-card resolved">
         <div class="event-top">
           <div class="event-date">4 / 15</div>
-          <div class="event-title">收到理賠款項<span class="tag tag-success">結案</span></div>
+          <div class="event-title">5 位保戶收到理賠款項<span class="tag tag-success">部分結案</span></div>
         </div>
-        <div class="event-desc">保戶收到保險公司撥付之理賠款項，本案理賠流程正式完成。</div>
+        <div class="event-desc">5 位保戶收到保險公司撥付之理賠款項。</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-dot dot-pending"></div>
+      <div class="event-card pending">
+        <div class="event-top">
+          <div class="event-date">4 / 17</div>
+          <div class="event-title">仍有 1 位保戶未收到理賠款項<span class="tag tag-pending">待完成</span></div>
+        </div>
+        <div class="event-desc">截至 4/17，尚有 1 位保戶未收到理賠款項，案件尚未全數結案。</div>
       </div>
     </div>
 
@@ -1005,7 +1032,7 @@
       <li>延保保費繳款單延遲發出，保戶須催詢三次（3/13、3/15、3/22）才於 3/26 收到</li>
       <li>理賠文件 3/27 確認無缺件後，遲至 4/1 才由理賠單位確認收件（共 5 天 或稱 3 個工作天）</li>
       <li>4/13 保戶表明將投訴主管機關後，當日 13:41 才收到受理通知</li>
-      <li>4/15 收到理賠款項，自 2/28 通知延保起歷時 46 日曆天（31 個工作天）</li>
+      <li>4/15 共 5 位保戶收到理賠款項；截至 4/17 仍有 1 位保戶未收到</li>
     </ul>
   </div>
 
@@ -1023,13 +1050,15 @@
           <div class="deadline-date">應於 <span class="deadline-highlight">4/11</span> 前給付</div>
           <div class="deadline-detail">自 3/27 起算 15 日</div>
           <div class="deadline-status overdue">已逾期（4/15 給付，逾期 4 日）</div>
+          <div class="deadline-affected">6 位保戶在此基準中已逾期</div>
         </div>
 
         <div class="deadline-card">
           <div class="deadline-basis">基準二：4/1 系統登載簽收文件</div>
           <div class="deadline-date">應於 <span class="deadline-highlight">4/16</span> 前給付</div>
           <div class="deadline-detail">自 4/1 起算 15 日</div>
-          <div class="deadline-status" style="background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-border);">未逾期（4/15 給付，期限前 1 日）</div>
+          <div class="deadline-status overdue">已逾期（截至 4/17 已過期 1 日）</div>
+          <div class="deadline-affected">1 位保戶在此基準中已逾期</div>
         </div>
 
       </div>
@@ -1039,7 +1068,7 @@
 
   <div class="page-footer">
     <span>旅平險理賠申請記錄</span>
-    <span>製作日期：2026 年 4 月 13 日</span>
+    <span>製作日期：2026 年 4 月 13 日<br>更新日期：2026 年 4 月 17 日</span>
   </div>
 
   <!-- Appendix: Checklist -->
